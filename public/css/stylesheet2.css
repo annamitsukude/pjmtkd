@@ -1,0 +1,189 @@
+/* .box {
+  width: 50%;
+  height: 400px;
+  border: grey 1px solid;
+  border-radius: 5px;
+  margin-top: 60px;
+  margin-left;
+  padding:20px;
+
+} */
+
+/* all */
+* {
+  font-family: Verdana,sans-serif;
+}
+
+.container {
+  width: 1050px;
+  margin: 0 auto;
+}
+
+/* header */
+.main-nav {
+  padding-left: 0;
+  margin: 0 0;
+  list-style-type: none;
+  display: flex;
+  background-color: #4584b1;
+}
+
+.main-nav li:first-child {
+  margin-right: auto;
+}
+
+.main-nav a {
+  margin: 10px;
+  color: #fff;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.main-nav .logo {
+  color: #fff;
+  font-weight: bold;
+}
+#form02{
+    background-color: white;
+    width:200px;
+    height: 20px;
+    border: 1px green solid;
+}
+#form02 input{
+    vertical-align: top;
+    margin: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+#form02{
+    border-radius: 10px;
+}
+#input02{
+    border: none;
+    width: 170px;
+    padding-left: 10px;
+}
+#submit02{
+    width: 30px;
+    border: none;
+    background-image: url(画像へのパス);
+    background-position: center;
+    background-size: auto 90%;
+    background-repeat: no-repeat;
+}
+
+/* section edit-button */
+.edit-button a {
+  margin: 40px 0 0;
+}
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 0.9em;
+  text-decoration: none;
+  color: #4584b1;
+  border: solid 2px #4584b1;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border > i {
+  padding-left: 5px;
+}
+
+.btn-flat-border:hover {
+  background: #4584b1;
+  color: white;
+}
+
+/* table */
+.tabel-base {
+  white-space:nowrap;
+}
+
+.tabel-base th {
+  font-size: 15px;
+  font-weight: normal;
+  color: grey;
+  text-align: left;
+  padding: 7px 0px;
+}
+
+.tabel-base td {
+  color: black;
+  padding: 7px 50px;
+}
+
+.tabel-base td > span {
+  display: inline-block;
+  padding-left: 15px;
+  color: grey;
+}
+
+/* section first-info */
+
+.first-info {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.username {
+  margin-bottom: 20px;
+}
+
+.username h1 {
+font-size: 27px;
+margin-bottom: 0;
+margin-top: 0;
+}
+
+.username h3 {
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: 0px;
+
+}
+
+/* subtitle */
+.subtitle {
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* section secound-info */
+.secound-info {
+  background-color: #f2f7fa;
+  padding: 20px 0;
+  border-top: 1px #dcecf7 solid;
+  border-bottom: 1px #dcecf7 solid;
+  margin-top: 40px;
+}
+
+.secound-left-info {
+  float: left;
+  margin-right: 100px;
+}
+
+/* invoices-info */
+.invoices-info {
+  margin-top: 40px;
+  /* margin-bottom:  */
+}
+
+.box7 {
+  padding: 15px 30px;
+  margin-bottom: 40px;
+  background: whitesmoke;/*背景色*/
+  border-left: double 7px #4584b1;/*左線*/
+  border-right: double 7px #4584b1;/*右線*/
+}
+
+
+.invoices-info p {
+  padding: 10px 0;
+  margin: 0;
+}

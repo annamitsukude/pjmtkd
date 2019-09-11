@@ -1,0 +1,14 @@
+.container btn-success {
+  margin: 20px 0 ;
+
+}
+
+.form-group input {
+
+  width: 700px;
+}
+.form-group label {
+  width: 200px;
+  float: left;
+  padding-top: 10px;
+}
