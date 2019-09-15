@@ -8,7 +8,7 @@ use App\Invoice;
 
 class InvoicesController extends Controller
 {
-    public function store(Request $request, Customer $customer) {
+    public function store(Request $request, $id) {
       // $this->
       // validate
       // validate検証　メアド＠入ってない、数字が文字、必須のもの入ってない
@@ -24,7 +24,17 @@ class InvoicesController extends Controller
         'staff' => $request->staff,
         'place_delivery' => $request->place_delivery
         ]);
+      $customer = Customer::find($id);
       $customer->invoices()->save($invoice);
       return redirect()->action('CustomersController@show',$customer);
+    }
+
+    public function show($id,$invoice_id) {
+      $customer = Customer::find($id);
+      $invoice = Invoice::find($invoice_id);
+      return view('invoices.show')->with([
+       "customer" => $customer,
+       "invoice"  => $invoice,
+      ]);
     }
 }

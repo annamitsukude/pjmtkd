@@ -1,128 +1,148 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>顧客編集</title>
-    <link rel="stylesheet" href="/css/stylesheet3.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>顧客編集</title>
+  <script src="https://kit.fontawesome.com/cb42dc71a3.js"></script>
+  <link rel="stylesheet" href="/css/stylesheet4.css">
+</head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">pjmtkd</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <header>
+      <nav>
+        <ul class="main-nav">
+            <li><a href="#" class="logo">seiton</a></li>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">ホーム<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">顧客名簿</a>
-          </li>
-          <li class="nav-item dropdown">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">請求書一覧</a>
-          </li>
-          <li class="nav-item dropdown">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">物品登録</a>
-          </li>
+            <!-- 多分liにform入らない -->
+            <li>
+              <form id="form02" action="#">
+                <input id="input02" type="text" placeholder="検索"><!--
+                /input間で改行したい場合はコメントアウト必須/
+                --><input id="submit02" type="submit" value="">
+              </form>
+            </li>
+            <!-- 再度調査 -->
+
+            <li><a href="#">顧客名簿</a></li>
+            <li><a href="#">請求書一覧</a></li>
+            <li><a href="#">物品登録</a></li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+          <!-- サーチの方法探す -->
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form> -->
+      </nav>
+    </header>
 
     <div class="container">
-    <form method="post" action="{{ url('/customers')}}">
+      <form method="post" action="{{ url('/customers')}}">
         {{ csrf_field() }}
-        <button type="submit" class="btn btn-success">顧客登録</button>
-        <div class="form-group">
-          <label>会社名</label>
-          <input type="text" value="{{old('company_name',$customer->company_name)}}" name="company_name" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>会社名(ふりがな)</label>
-          <input type="text" value="{{old('company_name_kana',$customer->company_name_kana)}}" name="company_name_kana" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>所属(部署)/役職</label>
-          <input type="text" value="{{old('division',$customer->division)}}" name="division" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>氏名</label>
-          <input type="text" value="{{old('name',$customer->name)}}" name="name" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>氏名(ふりがな)</label>
-          <input type="text" value="{{old('name_furigana',$customer->name_furigana)}}" name="name_furigana" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>連名</label>
-          <input type="text" value="{{old('name_renmei',$customer->name_renmei)}}" name="name_renmei" class="form-control">
-      </div>
-        <!-- いくつかの候補から選べるようにしたい -->
-      <div class="form-group">
-          <label>支払い条件</label>
-          <input type="text" value="{{old('payment_term',$customer->payment_term)}}" name="payment_term" class="form-control">
-      </div>
-      <div class="form-group">
-        <!-- 元のカラムに%入れたい -->
-          <label>割引率</label>
-          <input type="text" value="{{old('discount',$customer->discount)}}" name="discount" class="form-control">
-      </div>
-      <div class="form-group">
-        <!-- 郵便番号紐付けできないのかな -->
-        <!-- 自宅/会社　など種類選びたい -->
-          <label>住所(メイン)</label>
-          <input type="text" value="{{old('address_main',$customer->address_main)}}" name="address_main" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>住所(サブ)</label>
-          <input type="text" value="{{old('address_sub',$customer->address_sub)}}" name="address_sub" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>携帯番号</label>
-          <input type="number" value="{{old('phone_num',$customer->phone_num)}}" name="phone_num" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>電話番号</label>
-          <input type="text" value="{{old('tel',$customer->tel)}}" name="tel" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>メールアドレス</label>
-          <input type="text" value="{{old('mail',$customer->mail)}}" name="mail" class="form-control">
-      </div>
-      <!-- チェックボックスの隙間きになる -->
-      <div class="checkbox">
-          <label>
-            <input type="hidden" name="dm" value="無">
-            <input type="checkbox" name="dm" value="有">DM
-          </label>
-      </div>
-      <div class="form-group">
-          <label>搬入経路</label>
-          <input type="text" value="{{old('route',$customer->route)}}" name="route" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>メモ</label>
-          <input type="text" value="{{old('memo',$customer->memo)}}" name="memo" class="form-control">
-      </div>
 
-        <button type="submit" class="btn btn-success">顧客登録</button>
-    </form>
-</div>
+        <section class="edit-button">
+            <a href="#" class="btn-flat-border">登録する<i class="fas fa-address-card"></i></a>
+        </section>
+
+        <!-- <button type="submit" class="btn btn-success">顧客登録</button> -->
+        <section class="touroku">
+          <div class="form-group">
+              <label for ="company_name" class="label">会社名</label>
+              <input type="text" value="{{old('company_name',$customer->company_name)}}" name="company_name" id="company_name">
+          </div>
+
+          <div class="form-group">
+              <label for="company_name_kana" class="label">会社名(ふりがな)</label>
+              <input type="text" value="{{old('company_name_kana',$customer->company_name_kana)}}" name="company_name_kana" id="company_name_kana">
+          </div>
+
+          <div class="form-group">
+              <label for="division" class="label">所属(部署)/役職</label>
+              <input type="text" value="{{old('division',$customer->division)}}" name="division" id="division">
+          </div>
+
+          <div class="form-group">
+              <label for="name" class="label">氏名</label>
+              <input type="text" value="{{old('name',$customer->name)}}" name="name" id="name">
+          </div>
+
+          <div class="form-group">
+              <label for="name_furigana" class="label">氏名(ふりがな)</label>
+              <input type="text" value="{{old('name_furigana',$customer->name_furigana)}}" name="name_furigana" id="name_furigana">
+          </div>
+
+          <div class="form-group">
+              <label for="name_renmei" class="label">連名</label>
+              <input type="text" value="{{old('name_renmei',$customer->name_renmei)}}" name="name_renmei" id="name_renmei">
+          </div>
+
+          <div class="form-group">
+              <label for="payment_term" class="label">支払い条件</label>
+              <select value="{{old('payment_term',$customer->payment_term)}}" name="payment_term" id="payment_term">
+                <option value="mae">
+                  前支払い
+                </option>
+                <option value="seikyusho-yokugetu" selected>
+                  請求書支払(翌月末)
+                </option>
+                <option value="seikyusho-yokuyokugetu">
+                  請求書支払(翌々月末)
+                </option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="discount" class="label">割引率</label>
+              <input type="text" value="{{old('discount',$customer->discount)}}" name="discount" id="discount" placeholder="5%">
+          </div>
+
+          <div class="form-group">
+            <!-- 郵便番号紐付けできないのかな -->
+              <label for="address_main" class="label">郵便番号</label>
+              <input type="number" value="{{old('address_main',$customer->address_main)}}" name="address_main" id="address_main">
+          </div>
+
+          <div class="form-group">
+              <label for="address_sub" class="label">住所</label>
+              <input type="text" value="{{old('address_sub',$customer->address_sub)}}" name="address_sub" id="address_sub">
+          </div>
+
+          <div class="form-group">
+              <label for="phone_num" class="label">携帯番号</label>
+              <input type="number" value="{{old('phone_num',$customer->phone_num)}}" name="phone_num" id="phone_num">
+          </div>
+
+          <div class="form-group">
+              <label for="tel" class="label">電話番号</label>
+              <input type="number" value="{{old('tel',$customer->tel)}}" name="tel" id="tel">
+          </div>
+
+          <div class="form-group">
+              <label for="mail" class="label">メールアドレス</label>
+              <input type="email" value="{{old('mail',$customer->mail)}}" name="mail" id="mail">
+          </div>
+
+          <!-- チェックボックスの隙間きになる -->
+          <div class="form-group">
+              <label class="label">
+                <input type="hidden" name="dm" value="無">
+                <input type="checkbox" name="dm" value="有">DM
+              </label>
+          </div>
+
+          <div class="form-group">
+              <label for="route" class="label">搬入経路</label>
+              <textarea value="{{old('route',$customer->route)}}" name="route" id="route"></textarea>
+          </div>
+
+          <div class="form-group">
+            <!-- placeoholder入れる -->
+              <label for="memo" class="label">メモ</label>
+              <textarea value="{{old('memo',$customer->memo)}}" name="memo" id="memo" placeholder="引き継ぎ項目を記入">
+              </textarea>
+          </div>
+
+        </section>
+      </form>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

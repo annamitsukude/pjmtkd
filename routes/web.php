@@ -17,3 +17,4 @@ Route::get('/customers/create', 'CustomersController@create');
 Route::post('/customers', 'CustomersController@store');
 Route::get('/customers/{id}/edit', 'CustomersController@edit')->where('id','[0-9]+');
 Route::post('/customers/{id}/invoices', 'InvoicesController@store')->where('id','[0-9]+');
+Route::get('/customers/{id}/invoices/{invoice_id}', 'InvoicesController@show')->where('id','[0-9]+');

@@ -3,7 +3,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>顧客詳細</title>
+    <title>請求書詳細</title>
     <script src="https://kit.fontawesome.com/cb42dc71a3.js"></script>
     <link rel="stylesheet" href="/css/stylesheet2.css">
   </head>
@@ -36,7 +36,7 @@
     </header>
     <section class="edit-button">
       <div class="container">
-        <a href="{{ url('/customers/' . $customer->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a>
+        <!-- <a href="{{ url('/customers/' . $customer->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a> -->
       </div>
     </section>
 
@@ -117,7 +117,7 @@
 
         @foreach ($customer->invoices as $invoice)
         <div class="box7">
-          <a href="/customers/{{$customer->id}}/invoices/{{$invoice->id}}"><p>{{ $invoice->payment_num }}</p></a>
+          <p>{{ $invoice->payment_num }}</p>
         </div>
         @endforeach
       </div>
