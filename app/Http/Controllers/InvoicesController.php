@@ -26,7 +26,14 @@ class InvoicesController extends Controller
         ]);
       $customer = Customer::find($id);
       $customer->invoices()->save($invoice);
-      return redirect()->action('CustomersController@show',$customer);
+      return redirect()->action('InvoicesController@show',[$customer->id,$invoice->id] );
+    }
+
+    public function create($id) {
+      $customer = Customer::find($id);
+      return view('invoices.create')->with([
+        "customer" => $customer
+      ]);
     }
 
     public function show($id,$invoice_id) {

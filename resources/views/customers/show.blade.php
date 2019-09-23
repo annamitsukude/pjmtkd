@@ -114,6 +114,9 @@
     <section class="invoices-info">
       <div class="container">
         <h3 class="subtitle">請求書</h3>
+        <section class="edit-button">
+          <a href="{{ url('/customers/' . $customer->id .'/invoices/create') }}" class="btn-flat-border">新規登録<i class="fas fa-marker"></i></a>
+        </section>
 
         @foreach ($customer->invoices as $invoice)
         <div class="box7">

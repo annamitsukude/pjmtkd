@@ -76,6 +76,35 @@
               <input type="text" value="{{old('place_delivery')}}" name="place_delivery" id="place_delivery">
           </div>
 
+          <div class="form-group">
+              <label for="place_delivery">請求内容</label>
+              <table>
+                <tr>
+                  <th>品番</th>
+                  <th>品名</th>
+                  <th>仕様</th>
+                  <th>数量</th>
+                  <th>単価</th>
+                </tr>
+                <tr>
+                  <td><input type="text" name="item_num" id="item_num"></td>
+                  <td><input type="text" name="item_name" id="item_name"></td>
+                  <td><input type="text" name="spec" id="spec"></td>
+                  <td><input type="text" name="number" id="number"></td>
+                  <td><input type="text" name="item_num" id="unit_price"></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="item_num" id="item_num"></td>
+                  <td><input type="text" name="item_name" id="item_name"></td>
+                  <td><input type="text" name="spec" id="spec"></td>
+                  <td><input type="text" name="number" id="number"></td>
+                  <td><input type="text" name="item_num" id="unit_price"></td>
+                </tr>
+              </table>
+
+
+          </div>
+
       </form>
     </div>
 
