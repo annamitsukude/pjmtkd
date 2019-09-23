@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>請求書詳細</title>
     <script src="https://kit.fontawesome.com/cb42dc71a3.js"></script>
-    <link rel="stylesheet" href="/css/stylesheet2.css">
+    <link rel="stylesheet" href="/css/stylesheet6.css">
   </head>
   <body>
     <header>
@@ -36,7 +36,8 @@
     </header>
     <section class="edit-button">
       <div class="container">
-        <!-- <a href="{{ url('/customers/' . $customer->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a> -->
+        <!-- 下記のhrefの中、修正する -->
+        <a href="{{ url('/customers/' . $customer->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a>
       </div>
     </section>
 
@@ -49,34 +50,28 @@
         <div class="main_info">
           <table class="tabel-base">
             <tr>
-              <th scope="col">#</th><td scope="row">1</td>
-            </tr>
-            <tr>
-              <th>連名</th><td>{{ $customer->name_renmei }}</td>
+              <th scope="col">#</th><td scope="row">{{ $invoice->customer_id }}</td>
             </tr>
             <tr>
               <th>会社名</th><td>{{ $customer->company_name }} <span>{{ $customer->company_name_kana }}</span></td>
             </tr>
             <tr>
-              <th>所属</th><td>{{ $customer->division }}</td>
+              <th>請求書作成日</th><td>{{ $invoice->create_date }}</td>
             </tr>
             <tr>
-              <th>電話</th><td>{{ $customer->tel }}</td>
+              <th>支払期限</th><td>{{ $invoice->payment_date }}</td>
             </tr>
             <tr>
-              <th>携帯</th><td>{{ $customer->phone_num }}</td>
+              <th>納品場所</th><td>{{ $invoice->place_delivery}}</a></td>
             </tr>
             <tr>
-              <th>メール</th><td><a href="#">{{ $customer->mail }}</a></td>
+              <th>請求書番号</th><td>{{ $invoice->payment_num }}</td>
             </tr>
             <tr>
-              <th>郵便番号</th><td>{{ $customer->address_main }}</td>
+              <th>支払方法</th><td>{{ $invoice->method_pay}}</td>
             </tr>
             <tr>
-              <th>住所</th><td>{{ $customer->address_sub}}</td>
-            </tr>
-            <tr>
-              <th>メモ</th><td>{{ $customer->memo}}</td>
+              <th>担当</th><td>{{ $invoice->staff}}</td>
             </tr>
           </table>
       </div>
@@ -86,32 +81,57 @@
     <section class="secound-info">
       <div class="container">
           <h3 class="subtitle">経理情報</h3>
-          <div class="secound-left-info">
+          <!-- <div class="secound-left-info"> -->
             <table class="tabel-base">
               <tr>
-                <th>支払い条件</th><td>{{ $customer->payment_term}}</td>
-              </tr>
-              <tr>
-                <th>DM</th><td>{{ $customer->dm}}</td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="second-right-info">
-            <table class="tabel-base">
-              <tr>
-                <th>割引率</th><td>{{ $customer->discount}}</td>
-              </tr>
-              <tr>
-                <th>搬入経路</th><td>{{ $customer->route}}</td>
+                <th>支払い条件</th>
+                <th>割引率</th>
+                <td>{{ $customer->payment_term}}</td>
+                <td>{{ $customer->discount}}</td>
               </tr>
             </table>
-          </div>
+          <!-- </div> -->
       </div>
     </section>
 
 
-    <section class="invoices-info">
+
+    <section class="invoices-item container">
+        <h3 class="subtitle">請求内容</h3>
+        <table>
+          <tr>
+            <th>品番</th>
+            <th>品名</th>
+            <th>仕様</th>
+            <th>数量</th>
+            <th>単価</th>
+          </tr>
+          <tr>
+            <td>item_num</td>
+            <td>item_name</td>
+            <td>spec</td>
+            <td>number</td>
+            <td>unit_price</td>
+          </tr>
+          <tr>
+            <td>item_num</td>
+            <td>item_name</td>
+            <td>spec</td>
+            <td>number</td>
+            <td>unit_price</td>
+          </tr>
+          <tr>
+            <td>item_num</td>
+            <td>item_name</td>
+            <td>spec</td>
+            <td>number</td>
+            <td>unit_price</td>
+          </tr>
+
+        </table>
+    </section>
+
+    <!-- <section class="invoices-info">
       <div class="container">
         <h3 class="subtitle">請求書</h3>
 
@@ -121,41 +141,7 @@
         </div>
         @endforeach
       </div>
-      <!-- あとで移動 -->
-      <form method="post" action="{{ action('InvoicesController@store',$customer->id)}}">
-          {{ csrf_field() }}
-          <button type="submit" class="btn btn-success">請求書登録</button>
-          <div class="form-group">
-              <label>発行日</label>
-              <input type="date" value="{{old('create_date')}}" name="create_date" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>支払期限</label>
-              <input type="date" value="{{old('payment_date')}}" name="payment_date" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>請求番号</label>
-              <input type="text" value="{{old('payment_num')}}" name="payment_num" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>支払い方法</label>
-              <input type="text" value="{{old('method_pay')}}" name="method_pay" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>支払い日</label>
-              <input type="date" value="{{old('date_pay')}}" name="date_pay" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>担当名</label>
-              <input type="text" value="{{old('staff')}}" name="staff" class="form-control">
-          </div>
-          <div class="form-group">
-              <label>納品場所</label>
-              <input type="text" value="{{old('place_delivery')}}" name="place_delivery" class="form-control">
-          </div>
-      </form>
-      <!-- ここから上あとで移動 -->
-    </section>
+    </section> -->
 
 
 

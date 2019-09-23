@@ -49,7 +49,7 @@
         <div class="main_info">
           <table class="tabel-base">
             <tr>
-              <th scope="col">#</th><td scope="row">1</td>
+              <th scope="col">#</th><td scope="row">{{ $customer->id}}</td>
             </tr>
             <tr>
               <th>連名</th><td>{{ $customer->name_renmei }}</td>
