@@ -25,16 +25,22 @@ class InvoicesController extends Controller
         'staff' => $request->staff,
         'place_delivery' => $request->place_delivery
         ]);
-      $invoice_item = new InvoiceItem ([
-        'item_num'=>$request->item_num,
-        'item_name'=>$request->item_name,
-        'spec'=>$request->spec,
-        'number'=>$request->number,
-        'unit_price'=>$request->unit_price
-        ]);
       $customer = Customer::find($id);
       $customer->invoices()->save($invoice);
-      $invoice->invoice_items()->save($invoice_item);
+
+      $item_size = count($request->item_num);
+
+      for ($i = 0; $i < $item_size; $i++) {
+        $invoice_item = new InvoiceItem ([
+            'item_num'=>$request->item_num[$i],
+            'item_name'=>$request->item_name[$i],
+            'spec'=>$request->spec[$i],
+            'number'=>$request->number[$i],
+            'unit_price'=>$request->unit_price[$i]
+        ]);
+        $invoice->invoice_items()->save($invoice_item);
+      }
+
       return redirect()->action('InvoicesController@show',[$customer->id,$invoice->id] );
     }
 
