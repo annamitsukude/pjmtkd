@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>請求書登録</title>
+  <title>請求書編集</title>
   <script src="https://kit.fontawesome.com/cb42dc71a3.js"></script>
   <link rel="stylesheet" href="/css/stylesheet4.css">
 </head>
@@ -43,37 +43,37 @@
 
           <div class="form-group">
               <label for="create_date">発行日</label>
-              <input type="date" value="{{old('create_date')}}" name="create_date" id="create_date">
+              <input type="date" value="{{old('create_date',$invoice->create_date)}}"  name="create_date" id="create_date">
           </div>
 
           <div class="form-group">
               <label for="payment_date">支払期限</label>
-              <input type="date" value="{{old('payment_date')}}" name="payment_date" id="payment_date">
+              <input type="date" value="{{old('payment_date',$invoice->payment_date)}}" id="payment_date">
           </div>
 
           <div class="form-group">
               <label for="payment_num">請求番号</label>
-              <input type="text" value="{{old('payment_num')}}" name="payment_num" id="payment_num">
+              <input type="text" value="{{old('payment_num',$invoice->payment_num)}}" id="payment_num">
           </div>
 
           <div class="form-group">
               <label for="method_pay">支払い方法</label>
-              <input type="text" value="{{old('method_pay')}}" name="method_pay" id="method_pay">
+              <input type="text" value="{{old('method_pay',$invoice->method_pay)}}" id="method_pay">
           </div>
 
           <div class="form-group">
               <label for="date_pay">支払い締日</label>
-              <input type="date" value="{{old('date_pay')}}" name="date_pay" id="date_pay">
+              <input type="date" value="{{old('date_pay',$invoice->date_pay)}}" name="date_pay" id="date_pay">
           </div>
 
           <div class="form-group">
               <label for="staff">担当名</label>
-              <input type="text" value="{{old('staff')}}" name="staff" id="staff">
+              <input type="text" value="{{old('staff',$invoice->staff)}}" name="staff" id="staff">
           </div>
 
           <div class="form-group">
               <label for="place_delivery">納品場所</label>
-              <input type="text" value="{{old('place_delivery')}}" name="place_delivery" id="place_delivery">
+              <input type="text" value="{{old('place_delivery',$invoice->place_delivery)}}" id="place_delivery">
           </div>
 
           <div class="form-group">

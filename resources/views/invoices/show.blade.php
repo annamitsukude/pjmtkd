@@ -37,7 +37,7 @@
     <section class="edit-button">
       <div class="container">
         <!-- 下記のhrefの中、修正する -->
-        <a href="{{ url('/customers/' . $customer->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a>
+        <a href="{{ url('/customers/' . $customer->id .'/invoices/' . $invoice->id . '/edit') }}" class="btn-flat-border">編集する<i class="fas fa-marker"></i></a>
       </div>
     </section>
 
@@ -106,27 +106,15 @@
             <th>数量</th>
             <th>単価</th>
           </tr>
+          @foreach ($invoice->invoice_items as $invoice_item)
           <tr>
-            <td>item_num</td>
-            <td>item_name</td>
-            <td>spec</td>
-            <td>number</td>
-            <td>unit_price</td>
+            <td>{{$invoice_item->item_num}}</td>
+            <td>{{$invoice_item->item_name}}</td>
+            <td>{{$invoice_item->spec}}</td>
+            <td>{{$invoice_item->number}}</td>
+            <td>{{$invoice_item->unit_price}}</td>
           </tr>
-          <tr>
-            <td>item_num</td>
-            <td>item_name</td>
-            <td>spec</td>
-            <td>number</td>
-            <td>unit_price</td>
-          </tr>
-          <tr>
-            <td>item_num</td>
-            <td>item_name</td>
-            <td>spec</td>
-            <td>number</td>
-            <td>unit_price</td>
-          </tr>
+          @endforeach
 
         </table>
     </section>

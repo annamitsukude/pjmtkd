@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Invoice;
+use App\InvoiceItem;
 
 class InvoicesController extends Controller
 {
@@ -24,8 +25,16 @@ class InvoicesController extends Controller
         'staff' => $request->staff,
         'place_delivery' => $request->place_delivery
         ]);
+      $invoice_item = new InvoiceItem ([
+        'item_num'=>$request->item_num,
+        'item_name'=>$request->item_name,
+        'spec'=>$request->spec,
+        'number'=>$request->number,
+        'unit_price'=>$request->unit_price
+        ]);
       $customer = Customer::find($id);
       $customer->invoices()->save($invoice);
+      $invoice->invoice_items()->save($invoice_item);
       return redirect()->action('InvoicesController@show',[$customer->id,$invoice->id] );
     }
 
@@ -40,6 +49,15 @@ class InvoicesController extends Controller
       $customer = Customer::find($id);
       $invoice = Invoice::find($invoice_id);
       return view('invoices.show')->with([
+       "customer" => $customer,
+       "invoice"  => $invoice,
+      ]);
+    }
+
+    public function edit($id,$invoice_id) {
+      $customer = Customer::find($id);
+      $invoice = Invoice::find($invoice_id);
+      return view('invoices.edit')->with([
        "customer" => $customer,
        "invoice"  => $invoice,
       ]);

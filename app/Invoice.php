@@ -12,4 +12,8 @@ class Invoice extends Model
     public function customer() {
       return $this->belongsTo('App\Customer');
     }
+
+    public function invoice_items() {
+      return $this->hasMany('App\InvoiceItem');
+    }
 }
